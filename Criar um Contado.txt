@@ -1,0 +1,19 @@
+- Criar um Contado
+	stringUtils
+	inserir 
+	tratar colisões
+
+- Listar um Contato
+	imprimir a lista de contatos
+
+- Editar Contato
+	buscar o contato (email)
+	apaga o contado da tabela
+	faz a edição
+	insere 
+	trata as colisões
+
+- Exporta Contato
+	Fazer um arquivo com todos os contatos
+
+- Remover Contato
