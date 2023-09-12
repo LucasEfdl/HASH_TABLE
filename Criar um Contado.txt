@@ -10,10 +10,13 @@
 	buscar o contato (email)
 	apaga o contado da tabela
 	faz a edição
-	insere 
-	trata as colisões
+		insere 
+		trata as colisões
 
 - Exporta Contato
 	Fazer um arquivo com todos os contatos
 
 - Remover Contato
+	Listar
+	verificar se existe esse contato
+		

@@ -1,24 +1,49 @@
-function nomeParaBinario(nome) {
-    let binario = '';
-    for (let i = 0; i < nome.length; i++) {
-        const codigoAscii = nome.charCodeAt(i);
-        const binarioChar = codigoAscii.toString(2).padStart(8, '0');
-        console.log(binarioChar);
-        binario += binarioChar;
+function completeStringLength(binaryString, hashTableSize) {
+    if (typeof binaryString === "string") {
+        
+        if (binaryString.length % hashTableSize != 0) {
+            const remainingQuantity = binaryString.length % hashTableSize;
+            const intendedSize = binaryString.length + (hashTableSize - remainingQuantity)
+            
+            binaryString = binaryString.padStart(intendedSize, '0')
+            
+            return binaryString
+        }
+        return binaryString
+    } else {
+        const err =  new Error("A entrada passada não é uma string")
+        throw err
     }
-    if (binario.length % 5 != 0) {
-        const resto = binario.length % 5;
-        const tamanho = binario.length + (5 - resto)
-
-        binario = binario.toString(2).padStart(tamanho, '0')
-    }
-    console.log(binario.length);
-    return binario;
+    
 }
 
-const nomeBinario = nomeParaBinario("l")
+function stringToBinary(key) {
+    if (typeof key === "string") {
+
+        let binaryString = '';
+        let asciiCode;
+        let binaryChar;
+    
+        for (let i = 0; i < key.length; i++) {
+            asciiCode = key.charCodeAt(i);
+            binaryChar =asciiCode.toString(2).padStart(8, "0")
+
+            binaryString += binaryChar;
+        }
+    
+        const correctBinaryString = completeStringLength(binaryString, 5)
+        
+        return correctBinaryString;
+    } else {
+        const err = new Error("A chave passada não é uma string")
+        throw err
+    }
+}
+
+const nomeBinario = stringToBinary("lucas")
 console.log("Nome para binario");
 console.log(nomeBinario)
+console.log(parseInt(somaSequencias(nomeBinario),2));
 
 
 function somaDiferente(seq1, seq2) {
