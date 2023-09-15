@@ -1,4 +1,4 @@
-function completeStringLength(binaryString, hashTableSize) {
+export function completeStringLength(binaryString, hashTableSize) {
     if (typeof binaryString === "string") {
         
         if (binaryString.length % hashTableSize != 0) {
@@ -17,7 +17,7 @@ function completeStringLength(binaryString, hashTableSize) {
     
 }
 
-function stringToBinary(key) {
+export function stringToBinary(key) {
     if (typeof key === "string") {
 
         let binaryString = '';
@@ -45,8 +45,7 @@ console.log("Nome para binario");
 console.log(nomeBinario)
 console.log(parseInt(somaSequencias(nomeBinario),2));
 
-
-function somaDiferente(seq1, seq2) {
+export function somaDiferente(seq1, seq2) {
     let resultado = '';
     for (let i = 0; i < seq1.length; i++) {
         if (seq1[i] === seq2[i]) {
@@ -58,7 +57,7 @@ function somaDiferente(seq1, seq2) {
     return resultado;
 }
 
-function somaSequencias(numeroBianrio) {
+export function somaSequencias(numeroBianrio) {
     if(typeof numeroBianrio === "string") {
 
         const sequencia01 = numeroBianrio.slice(0, 5)
