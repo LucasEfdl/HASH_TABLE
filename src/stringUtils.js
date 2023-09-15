@@ -1,4 +1,4 @@
-export function completeStringLength(binaryString, hashTableSize) {
+function completeStringLength(binaryString, hashTableSize) {
     if (typeof binaryString === "string") {
         
         if (binaryString.length % hashTableSize != 0) {
@@ -17,7 +17,7 @@ export function completeStringLength(binaryString, hashTableSize) {
     
 }
 
-export function stringToBinary(key) {
+function stringToBinary(key) {
     if (typeof key === "string") {
 
         let binaryString = '';
@@ -32,45 +32,40 @@ export function stringToBinary(key) {
         }
     
         const correctBinaryString = completeStringLength(binaryString, 5)
-        
-        return correctBinaryString;
+
+        return correctBinaryString
     } else {
         const err = new Error("A chave passada não é uma string")
         throw err
     }
 }
 
-const nomeBinario = stringToBinary("lucas")
-console.log("Nome para binario");
-console.log(nomeBinario)
-console.log(parseInt(somaSequencias(nomeBinario),2));
-
-export function somaDiferente(seq1, seq2) {
-    let resultado = '';
+function binaryAddition(seq1, seq2) {
+    let binaryAdditionResult = '';
     for (let i = 0; i < seq1.length; i++) {
         if (seq1[i] === seq2[i]) {
-            resultado += '0';
+            binaryAdditionResult += '0';
         } else {
-            resultado += '1';
+            binaryAdditionResult += '1';
         }
     }
-    return resultado;
+    return binaryAdditionResult;
 }
 
-export function somaSequencias(numeroBianrio) {
-    if(typeof numeroBianrio === "string") {
+function sequenceAddition(binaryNumber) {
+    if(typeof binaryNumber === "string") {
 
-        const sequencia01 = numeroBianrio.slice(0, 5)
-        const sequencia02 = numeroBianrio.slice(5, 10)
+        const sequence01 = binaryNumber.slice(0, 5)
+        const sequence02 = binaryNumber.slice(5, 10)
 
-        let result = somaDiferente(sequencia01, sequencia02)
+        let sequenceAdditionResult = binaryAddition(sequence01, sequence02)
 
-        for (let i = 10; i < numeroBianrio.length; i += 5) {
-            const newSequencia = numeroBianrio.slice(i, i + 5)
-            result = somaDiferente(result, newSequencia)
+        for (let i = 10; i < binaryNumber.length; i += 5) {
+            const newSequence = binaryNumber.slice(i, i + 5)
+            sequenceAdditionResult = binaryAddition(sequenceAdditionResult, newSequence)
         }
 
-        return result
+        return sequenceAdditionResult
 
     } else {
         console.log("erro");
@@ -78,5 +73,14 @@ export function somaSequencias(numeroBianrio) {
     }
 }
 
+module.exports = {
+    stringToBinary,
+    sequenceAddition
+};
+
+/* const nomeBinario = stringToBinary("lucas")
+console.log("Nome para binario");
+console.log(nomeBinario)
+console.log(parseInt(sequenceAddition(nomeBinario),2));
 console.log("\nSomando sequencias:\n");
-console.log(somaSequencias(nomeBinario));
+console.log(sequenceAddition(nomeBinario)); */
