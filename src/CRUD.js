@@ -9,6 +9,10 @@ function newContact (name, email, phone){
     }
 }
 
+module.exports = {
+    newContact
+};
+
 /* const nomeBinario = stringToBinary("lucas")
 console.log("Nome para binario");
 console.log(nomeBinario)
