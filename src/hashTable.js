@@ -71,6 +71,4 @@ displayHashTable(hashTable)
 
 hashRemoval(hashTable, contact, 14)
 
-displayHashTable(hashTable)
-
 
