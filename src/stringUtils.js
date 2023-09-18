@@ -14,7 +14,6 @@ function completeStringLength(binaryString, hashTableSize) {
         const err =  new Error("A entrada passada não é uma string")
         throw err
     }
-    
 }
 
 function stringToBinary(key) {

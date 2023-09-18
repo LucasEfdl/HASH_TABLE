@@ -2,16 +2,17 @@ const { stringToBinary , sequenceAddition } = require('./stringUtils.js');
 const { newContact } = require('./CRUD.js');
 
 const contact = {
-    name: "lucas",
-    email: "lucasefdl@gmail.com",
-    phone: 123,
-}
+        name: "lucas",
+        email: "lucasefdl@gmail.com",
+        phone: 123,
+    };
 
 function createHashTable(){
     let hashTable = [32]
     for(let i = 0; i < 32; i++){
         hashTable[i] = null;
     }
+    console.log("Hash table successfully created")
     return hashTable;
 }
 
@@ -20,6 +21,18 @@ function getHashKey(contact){
     key = sequenceAddition(key);
     return parseInt(key, 2)
 }
+
+function verifyEmail(hashTable, contact){
+    for(let i = 0; i < hashTable.length; i++){
+        console.log(hashTable[i]?.contact?.email == contact.email)
+        if((hashTable[i] !== null) && (hashTable[i]?.contact?.email == contact.email)){
+            console.log("Erro ao inserir: ja existe um contato com esse email")
+            break;
+        }
+    }
+    return true
+}
+
 
 function hashInsertion(hashTable, contact, key){
     if(hashTable[key] == null){
@@ -32,7 +45,7 @@ function hashInsertion(hashTable, contact, key){
                 break;
             }
             else{
-                console.log("Nao foi possivel inserir")
+                console.log("Erro ao inserir: sem espaço")
                 break;
             }
         }
@@ -46,29 +59,22 @@ function hashRemoval(hashTable, contact, key){
     }
 }
 
+function hashEdit(hashTable, uneditedContact, key, newName, newEmail, newPhone){
+    hashRemoval(hashTable, uneditedContact, key)
+    const editedContact = {
+        name: newName,
+        email: newEmail,
+        phone: newPhone
+    }
+    newKey = getHashKey(editedContact)
+    hashInsertion(hashTable, editedContact, newKey)
+}
+
 function displayHashTable(hashTable){
     console.log(hashTable)
 }
 
 const key = getHashKey(contact)
-console.log(key)
-
 const hashTable = createHashTable();
-
 hashInsertion(hashTable, contact, key)
-const auxContact = newContact("murilo", "murilofontes1@gmail.com", 123)
-const auxContact2 = newContact("manu", "manuabrante@gmail.com", 123)
-const auxContact3 = newContact("manu", "manuabrante@gmail.com", 123)
-
-hashInsertion(hashTable, auxContact, 32)
-hashInsertion(hashTable, auxContact2, 32)
-hashInsertion(hashTable, auxContact3, 14)
 displayHashTable(hashTable)
-
-hashRemoval(hashTable, auxContact, 32)
-
-displayHashTable(hashTable)
-
-hashRemoval(hashTable, contact, 14)
-
-
